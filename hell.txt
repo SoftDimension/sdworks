@@ -1,0 +1,2 @@
+mongodb+srv://PRAVAS:<password>@cluster0.cjeugda.mongodb.net/?retryWrites=true&w=majority
+Y1DYdvcsU9WTdjJF
