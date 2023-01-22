@@ -14,7 +14,7 @@ function RunningProjectShow({
 }) {
   return (
     <>
-      <div className="bg-white w-2/4 p-8 rounded-md">
+      <div className="bg-white w-full p-8 rounded-md">
         <h1 className="flex items-center font-semibold text-cyan-900">
           <span
             className={

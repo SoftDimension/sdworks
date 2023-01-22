@@ -23,3 +23,16 @@ body{
   top: -5px;
   right: -5px;
 }
+
+.Login_Page{
+  width: 95vw;
+  height: 98vh;
+}
+
+.TaskBarBgColor{
+  background: rgba(0, 0, 0, 0.207);
+}
+
+.Navbar__Wrapper{
+  height: 85vh!important;
+}

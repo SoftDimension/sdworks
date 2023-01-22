@@ -3,12 +3,12 @@ const router = express.Router();
 require('../database/connect');
 const AllCategory = require("../models/ProjectChatagorySchema")
 const AllUser = require("../models/UserSchema")
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-// const authenticate = require("../middleware/authenticate")
-// const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const authenticate = require("../middleware/authenticate")
+const cookieParser = require("cookie-parser");
 
-// router.use(cookieParser());
+router.use(cookieParser());
 
 //HOME ROUTER ===============================
 
@@ -19,8 +19,7 @@ router.get("/", (req, res ) => {
 router.post("/register", async (req, res) => {
 
     const { full_name, email, profession, position , country,working_style,programming_language, phone, password, cpassword } = req.body;
-    // res.json(req.bady)
-    // console.log(req.body)
+    
     if (!full_name || !email || !profession || !position || !country || !working_style || !programming_language || !phone || !password || !cpassword) {
         return res.status(421).json({ error: "PLESE FILL ALL THE FEILD" });
     } else {
@@ -105,6 +104,18 @@ router.post("/signin", async (req, res) => {
     }
 });
 
+router.post("/logintest", async (req, res) => {
+    const { email, password } = req.body;
+    try{
+        password = bcrypt.hash(password, 12);
+        console.log(password)
+    }catch(err){
+        res.send(err)
+    }
+    
+    
+});
+
 
 
 router.post("/entryRegister", async (req, res) => {
@@ -143,5 +154,10 @@ router.post("/entryRegister", async (req, res) => {
     
 
 });
+
+router.get("/today", authenticate, (req, res) => {
+    res.send(req.rootUser);
+    console.log(req.rootUser)
+})
 
 module.exports = router;
